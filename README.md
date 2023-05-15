@@ -1,28 +1,34 @@
 <p align="center">
-<img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
+<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/img_activedirectory-page.png" height="65%" width="40%" />
 </p>
 
-<h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
+<h1>Introduction</h1>
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Active Directory Domain Services
-- PowerShell
+<h2>Tutorial Guidelines</h2>
 
-<h2>Operating Systems Used </h2>
+<h3>Step 1: Creating two virtuals machine in Azure</h3>
 
-- Windows Server 2022
-- Windows 10 (21H2)
+First we need two VMs: one running Windows Server 2022 and another running Windows 10 Pro. I've detailed in the previous tutorials on how to create a virtual machine in Azure which you can find by clicking 
+[here](https://github.com/Mwajiduddin/How-to-create-a-virtual-machine-in-Microsoft-Azure) and [here](https://github.com/Mwajiduddin/Observing-network-traffic-between-two-virtual-machines-in-Azure-using-Wireshark) but I'll to a quick rundown here too.
+
+To start off let's first create our Windows Server VM, this is the VM that will have Active Directory installed into. So log into Microsoft Azure, go into "Virtual machines", name the VM, select Windows Server 2022 next to "Image" and select a region. You might be wondering why I didn't create a resource group first like I did in the previous tutorials, here you can make and name one next "Resource group". What I showed in the previous tutorials was to help get a better understanding on the process of what goes into creating one. Choose a size with atleast two VCPUs otherwise it will be slow, create a username and password and keep note of it, check the "Licensing" box, hit "Review + create" and after validating click on "Create."
 
 
 
-<h2>Deployment and Configuration Steps</h2>
 
-<h3>Step 1: Setup Resources in Azure</h3>
+
+
+
+
+
+
+
+
+
+
 
 - Create two virtual machines
   - If you need help creating your virtual machines, please see my tutorial [here](https://github.com/miquelmanaois/virtualmachine)
