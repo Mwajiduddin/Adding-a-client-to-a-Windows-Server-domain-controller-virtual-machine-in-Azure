@@ -16,13 +16,46 @@ To start off let's first create our Windows Server VM, this is the VM that will 
 
 While this VM is being creating, we can start making our second VM which will serve as our Client so same process as last time only for "Image" select Windows Pro 10, remember to select the same resource group as the first VM you made and for ease of use you can choose the same username and password as the first VM you made.
 
-Next we need to switch the Domain Controller VM private IP address to static and this can be done by selecting the Windows Server VM, clicking on "Networking" then the blue text next to Network Interface, selecting "IP configuration", clicking on the IP address underneath the "Private IP address" column, switching it to "Static" and save.
+Next we need to switch the Windows Server VM private IP address to static and this can be done by selecting the Windows Server VM, clicking on "Networking" then the blue text next to Network Interface, selecting "IP configuration", clicking on the IP address underneath the "Private IP address" column, switching it to "Static" and save.
 
-<h3>Step 2: Enabling connectivity between the Domain Controller and Client</h3>
+<h3>Step 2: Enabling connectivity between the Domain Controller and Client virtual machines</h3>
 
-Log into Client VM by using Remote Desktop Connection, once there open up command prompt and ping the Domain Controller VM by its private IP address. You'll notice that it will respond with a timed out request meaning that Domain Controller's firewall is blocking any ICMP inbound traffic. To allow this kind of traffic and enable connectivity, log into the Domain Controller VM by using Remote Desktop Connection and search Windows Defender Firewall in the Windows search bar and select "Windows Defender Firewall with Advanced Security." Select "Inbound Rules" and sort by protocol by clicking on the protocol column. Then enable "Core Networking Diagnostic - ICMP Echo Request (ICMPv4-In)" both the private and domain by right clicking and selecting "Enable Rule". After this you will notice the ping requests will start working again in the Client VM.
+Log into your Client VM by using Remote Desktop Connection, once there open up command prompt and ping the Windows Server VM by its private IP address. You'll notice that it will respond with a timed out request meaning that Windows Server's firewall is blocking any ICMP inbound traffic. To allow this kind of traffic and enable connectivity, log into the Windows Server VM by using Remote Desktop Connection and search Windows Defender Firewall in the Windows search bar and select "Windows Defender Firewall with Advanced Security." Select "Inbound Rules" and sort by protocol by clicking on the protocol column. Then enable "Core Networking Diagnostic - ICMP Echo Request (ICMPv4-In)" both the private and domain by right clicking and selecting "Enable Rule". After this you will notice the ping requests will start working again in the Client VM.
 
-<h3>Step 3: Installing Active Directory in our Domain Controller VM</h3>
+<h3>Step 3: Installing Active Directory in Windows Server VM</h3>
+
+Open Server Manager in your Windows Server VM, select "Add roles and features", click Next for each section, once you are in "Server Roles" select "Active Directory Domain Services" and "Add Features" on the pop-up window and finish installing it. Then click on the top right flag with the yellow exclamation point, click on the blue text "Promote this server to a domain controller", then select "Add a new forest" on the "Deployment Configuration" window and name your root domain. Make a password under "Domain Controller Options" (choose the same password you made for Windows Server VM for simplicity) and proceed through in installing. Once done installing our Windows Server VM is now a domain controller and you'll notice that it will automatically log you off so just log back in but this time our username will be different. Your username will be the name of your root domain + backslash + VM's username such as below.
+
+
+<h3>Step 4: Creating Organizational Units (OU) in Active Directory</h3>
+
+In this step we will be creating a couple of OUs which are basically folders in Active Directory. So after logging into your Domain Controller VM, open up Server Manager, click on "Active Directory Users and Computers" then right click on your root domain and select "Organizational Unit" and name one as "EMPLOYEES" and another as "ADMINS." Now we are going to create our own Admin account so go to the ADMINS folder, right click, hover over to New, click on User then name your Admin, user logon account, your password and uncheck the box that says "User must change password at next logon" and hit Finish. But the user we just made isn't an Admin just yet so right click on the user account, select Properties, click on "Member Of" tab and click on Add. A window will appear type in "Domain Admin" in the box
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
