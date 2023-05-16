@@ -1,9 +1,11 @@
+<h1 align="center">Connecting a client VM to a domain controller VM and utilizing Active Directory</h1>
+
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/img_activedirectory-page.png" height="65%" width="40%" />
 </p>
 
 <h1>Introduction</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+In this tutorial we will launch a Windows Server virtual machine and change it into a domain controller by installing Active Directory. We will also set up a client virtual machine to connect it with the domain controller and configure admin and user accounts in VMs.<br />
 
 <h2>Tutorial Guidelines</h2>
 
