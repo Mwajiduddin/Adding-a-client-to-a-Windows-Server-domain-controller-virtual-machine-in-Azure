@@ -41,17 +41,17 @@ In this step we are going to use the Domain Controller as Client's DNS server in
 
 We've showcased from the previous step that we can now log into the Client VM by using an administrator account, in this step we are going to configure the Client virtual machine to let us log in as a normal domain user. We start off by right clicking the Windows start icon and going into System, select Remote Desktop, click on "Select users that can remotely access this PC" under User accounts, click on Add, type in "Domain Users", hit "Check Names" and press OK. Now all domain users are allow to log into the Client VM.
 
-<h3>Step 7: Creating many additional users and logging in as one of the users</h3>
+<h3>Step 7: Generating many additional users in Powershell and logging in as one of the users</h3>
 
-Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator and copy and paste the script below into Powershell. 
+Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator, copy the script below then click on the file icon on the top left corner and paste the script's content and hit the green play icon. Essentially we are creating 1,000 users each with the password of "Password1" and you can see this populated in
 <details>  
-  <summary> <h5>pre-configured Powershell Script</h5> </summary>
+  <summary> <h5>Non-administrator users generation Powershell script</h5> </summary>
   
   
 ```powershell
-# ----- Edit these Variables for your own Use Case ----- #
+ # ----- Edit these Variables for your own Use Case ----- #
 $PASSWORD_FOR_USERS   = "Password1"
-$NUMBER_OF_ACCOUNTS_TO_CREATE = 10000
+$NUMBER_OF_ACCOUNTS_TO_CREATE = 1000
 # ------------------------------------------------------ #
 
 Function generate-random-name() {
@@ -91,7 +91,7 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
                -Name $username `
                -EmployeeID $username `
                -PasswordNeverExpires $true `
-               -Path "ou=_EMPLOYEES,$(([ADSI]`"").distinguishedName)" `
+               -Path "ou=EMPLOYEES,$(([ADSI]`"").distinguishedName)" `
                -Enabled $true
     $count++
 }
@@ -99,6 +99,7 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
   
 </details>
 
+As this script is running, you can go to "Active Directory Users and Computers", refresh the "EMPLOYEES" folder and see it being populated by numerous different users. Log off of the Client VM and then choose one of the generated users that you would like to log back into the Client VM, remember the password is "Password1." You can double check by going into command prompt and typing in the "whoami" and "hostname" commands.
 
 
 
