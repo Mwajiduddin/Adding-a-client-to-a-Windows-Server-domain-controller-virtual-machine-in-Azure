@@ -1,4 +1,4 @@
-<h1 align="center">Joining a client virtual machine to a domain controller virtual machine</h1>
+<h1 align="center">Joining a client to a domain controller virtual machine in Azure</h1>
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/img_activedirectory-page.png" height="65%" width="40%" />
