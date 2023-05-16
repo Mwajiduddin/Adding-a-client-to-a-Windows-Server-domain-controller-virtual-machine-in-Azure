@@ -125,7 +125,7 @@ But the user we just made isn't an Admin just yet so right click on the user acc
 
 <h3>Step 5: Joining the Client VM to the Domain Controller</h3>
 
-In this step we are going to use the Domain Controller as Client's DNS server instead of the virtual DNS server assigned to the Client VM and we start off in the Azure portal and copy the private IP address for Domain Controller VM, head over to Networking under Settings for Client VM, click on the blue text of the Network Interface, then go into DNS server under Settings, select Custom and type in private IP address for the Domain Controller VM and hit Save.
+In this step we are going to use the Domain Controller as Client's DNS server instead of the virtual DNS server assigned to the Client VM and we start off in the Azure portal and copy the private IP address for Domain Controller VM, head over to Networking under Settings for Client VM, click on the blue text next to "Network Interface", then go into DNS server under Settings, select Custom and type in private IP address for the Domain Controller VM and hit Save.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c20.png" />
