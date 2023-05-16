@@ -170,7 +170,7 @@ After entering your credentials you will be prompted to restart the VM, now when
 We've showcased from the previous step that we can now log into the Client VM by using an administrator account, in this step we are going to configure the Client virtual machine to let us log in as a normal domain user. We start off by right clicking the Windows start icon and going into System, select Remote Desktop, click on "Select users that can remotely access this PC" under User accounts, click on Add, type in "Domain Users", hit "Check Names" and press OK. Now all domain users are allow to log into the Client VM.
 
 <p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c27.png" />
+<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c027.png" />
 </p>
 
 <p align="center">
