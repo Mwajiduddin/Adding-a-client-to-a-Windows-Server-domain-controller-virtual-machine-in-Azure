@@ -90,7 +90,7 @@ Once done installing our Windows Server VM is now a domain controller and you'll
 </p>
 
 
-<h3>Step 4: Creating Organizational Units (OU) and Admin accounts in Active Directory</h3>
+<h3>Step 4: Creating Organizational Units (OU) and logging in as an Admin in Active Directory</h3>
 
 In this step we will be creating a couple of OUs which are basically folders in Active Directory. So after logging into your Domain Controller VM, open up Server Manager, click on "Active Directory Users and Computers" then right click on your root domain and select "Organizational Unit" and name one as "EMPLOYEES" and another as "ADMINS."
 
