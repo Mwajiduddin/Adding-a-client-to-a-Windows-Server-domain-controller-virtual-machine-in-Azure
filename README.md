@@ -183,19 +183,7 @@ We've showcased from the previous step that we can now log into the Client VM by
 
 <h3>Step 7: Generating many additional users in Powershell and logging in as one of the users</h3>
 
-Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator, copy the script below then click on the file icon on the top left corner and paste the script's content and hit the green play icon. Essentially we are creating 1,000 users each with the password of "Password1" and you can see this populated in the EMPLOYEE OU.
-
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c30.png" />
-</p>
-
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c31.png" />
-</p>
-
-<p align="center">
-<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c32.png" />
-</p>
+Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator, copy the script below then click on the file icon on the top left corner and paste the script's content and hit the green play icon. Essentially we are creating 1,000 users each with the password of "Password1" and you can see this populated in the "EMPLOYEE" OU.
 
 
 <details>  
@@ -252,6 +240,18 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
 ```
   
 </details>
+
+<p align="center">
+<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c30.png" />
+</p>
+
+<p align="center">
+<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c31.png" />
+</p>
+
+<p align="center">
+<img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c32.png" />
+</p>
 
 As this script is running, go to "Active Directory Users and Computers", refresh the "EMPLOYEES" folder and you can see it being populated by numerous different users. Log off of the Client VM and then choose one of the generated users that you would like to log back into the Client VM, remember the password is "Password1." You can double check by going into command prompt and typing in the "whoami" and "hostname" commands.
 
