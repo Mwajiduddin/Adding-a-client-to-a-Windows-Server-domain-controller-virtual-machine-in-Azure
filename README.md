@@ -7,7 +7,7 @@
 <h1>Introduction</h1>
 In this tutorial we will launch a Windows Server virtual machine and change it into a domain controller by installing Active Directory. We will also set up a client virtual machine to connect it with the domain controller and configure admin and user accounts in VMs.<br />
 
-<h2>Tutorial Guidelines</h2>
+<h2>Tutorial Guideline</h2>
 
 <h3>Step 1: Creating two virtuals machine in Azure</h3>
 
