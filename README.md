@@ -14,14 +14,14 @@ In this tutorial we will launch a Windows Server virtual machine and change it i
 First we need two VMs: one running Windows Server 2022 (Domain Controller) and another running Windows 10 Pro (Client). I've detailed in the previous tutorials on how to create a virtual machine in Azure which you can find by clicking 
 [here](https://github.com/Mwajiduddin/How-to-create-a-virtual-machine-in-Microsoft-Azure) and [here](https://github.com/Mwajiduddin/Observing-network-traffic-between-two-virtual-machines-in-Azure-using-Wireshark) but I'll to a quick rundown here too.
 
-To start off let's first create our Windows Server VM, this is the VM that will have Active Directory installed and serve as our Domain Controller. So log into Microsoft Azure, go into "Virtual machines", name the VM, select Windows Server 2022 next to "Image" and select a region. You might be wondering why I didn't create a resource group first like I did in the previous tutorials, here you can make and name one by clicking on "Create new" next to "Resource group". What I showed in the previous tutorials was to help get a better understanding on the process of what goes into creating one. Choose a size with atleast two VCPUs otherwise it will be slow, create a username and password and keep note of it, check the Licensing box, hit "Review + create" and after validating click on "Create." 
+To start off let's first create our Windows Server VM, this is the VM that will have Active Directory installed and serve as our Domain Controller. So log into Microsoft Azure, go into "Virtual machines", name the VM, select Windows Server 2022 next to "Image" and select a region. You might be wondering why I didn't create a resource group first like I did in the previous tutorials, here you can make and name one by clicking on "Create new" next to "Resource group". What I showed in the previous tutorials was to help get a better understanding on the process of creating one. Choose a size with atleast two VCPUs otherwise it will be slow, create a username and password and keep note of it, check the Licensing box, hit "Review + create" and after validation click on "Create." 
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c1.png" />
 </p>
 
 
-While this VM is being creating, we can start making our second VM which will serve as our Client so same process as last time only for "Image" select Windows Pro 10, remember to select the same resource group as the first VM you made and for ease of use you can choose the same username and password as the first VM you made.
+While this VM is being creating, we can start making our second VM which will serve as our Client so the same process as last time only for "Image" select Windows Pro 10, remember to select the same resource group as the first VM you made and for ease of use you can choose the same username and password as the first VM you made.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c2.png" />
@@ -73,7 +73,7 @@ Open Server Manager in your Windows Server VM, select "Add roles and features", 
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c10.png" />
 </p>
 
-Then click on the top right flag with the yellow exclamation point, click on the blue text "Promote this server to a domain controller", then select "Add a new forest" on the "Deployment Configuration" window and name your root domain. Make a password under "Domain Controller Options" (choose the same password you made for Windows Server VM for simplicity) and proceed through in installing.
+Then go to the top right flag with the yellow exclamation point, click on the blue text "Promote this server to a domain controller", then select "Add a new forest" on the "Deployment Configuration" window and name your root domain (make it simple). Make a password under "Domain Controller Options" (choose the same password you made for Windows Server VM for simplicity) and finish installing it.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c11.png" />
@@ -112,7 +112,7 @@ Now we are going to create our own Admin account so go to the ADMINS folder, rig
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c17.png" />
 </p>
 
-But the user we just made isn't an Admin just yet so right click on the user account, select Properties, click on "Member Of" tab and click on Add. A window will appear, at the bottom where it states to enter object names type in "Domain Admin" in the box, click on "Check Names" and then press OK. Then log out of the VM and log back in this time as the Admin you created, the username will be the (name of your root domain + backslash + admin username).
+But the user we just made isn't an Admin just yet so right click on the user account, select Properties, click on the "Member Of" tab and click on Add. A window will appear, at the bottom where it states to enter object names type in "Domain Admin" in the box, click on "Check Names" and then press OK. Then log out of the VM and log back in this time as the Admin you created, the username will be the (name of your root domain + backslash + admin username).
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c18.png" />
@@ -136,19 +136,19 @@ In this step we are going to use the Domain Controller as Client's DNS server in
 </p>
 
 
-Then go back to Virtual machines, select your Client VM and click Restart and log back in to the VM.
+Then go back to Virtual machines, select your Client VM and click Restart and log back in.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c22.png" />
 </p>
 
-Open command prompt and type in the command ipconfig /all and you can see that the DNS server IP address is the same as the Domain Controller VM's private IP address.
+To double check, open command prompt and type in the command ipconfig /all and you can see that the DNS server IP address is the same as the Domain Controller VM's private IP address.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c23.png" />
 </p>
 
-To join this Client VM to the Domain Controller, right click the Windows start icon and click on System, go to "Rename this PC (advanced)" then click "Change", select Domain, type in your root domain and the a window will pop up asking for a username and password where you will enter the credentials of the Domain Admin account you created.
+To join this Client VM to the Domain Controller, right click the Windows start icon and click on System, go to "Rename this PC (advanced)" then click "Change", select Domain, type in your root domain and then a window will pop up asking for a username and password where you will enter the credentials of the Domain Admin account you created.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c24.png" />
@@ -167,7 +167,7 @@ After entering your credentials you will be prompted to restart the VM, now when
 
 <h3>Step 6: Logging into Client VM as a non-administrator user</h3>
 
-We've showcased from the previous step that we can now log into the Client VM by using an administrator account, in this step we are going to configure the Client virtual machine to let us log in as a normal domain user. We start off by right clicking the Windows start icon and going into System, select Remote Desktop, click on "Select users that can remotely access this PC" under User accounts, click on Add, type in "Domain Users", hit "Check Names" and press OK. Now all domain users are allow to log into the Client VM.
+We've showcased from the previous step that we can now log into the Client VM from an administrator account, in this step we are going to configure the Client virtual machine to let us log in as a normal domain user. We start off by right clicking the Windows start icon and going into System, select Remote Desktop, click on "Select users that can remotely access this PC" under User accounts, click on Add, type in "Domain Users", select "Check Names" and press OK. Now all domain users are allowed to log into the Client VM.
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/c027.png" />
@@ -183,7 +183,7 @@ We've showcased from the previous step that we can now log into the Client VM by
 
 <h3>Step 7: Generating many additional users in Powershell and logging in as one of the users</h3>
 
-Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator, copy the script below then click on the file icon on the top left corner and paste the script's content and hit the green play icon. Essentially we are creating 1,000 users each with the password of "Password1" and you can see this populated in the "EMPLOYEE" OU.
+Go into the Domain Controller VM, search up "Powershell ISE" in the Windows search bar, run it as administrator, copy the script below then click on the file icon on the top left corner and paste the script's content and hit the green play icon. Essentially we are creating 1,000 different users each with the password of "Password1" and you can see this populated in the "EMPLOYEE" OU.
 
 
 <details>  
