@@ -1,4 +1,4 @@
-<h1 align="center">Joining a client to a Windows Server domain controller virtual machine in Azure</h1>
+<h1 align="center">Adding a client to a Windows Server domain controller virtual machine in Azure</h1>
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/img_activedirectory-page.png" height="65%" width="40%" />
