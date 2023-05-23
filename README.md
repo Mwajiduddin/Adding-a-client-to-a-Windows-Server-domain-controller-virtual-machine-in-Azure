@@ -264,7 +264,7 @@ As this script is running, go to "Active Directory Users and Computers", refresh
 </p>
 
 
-Don't exit out of your virtuals machines and delete your resource groups in Azure just yet because if you want to learn how to configure file shares and its permissions in an Active Directory and client environment you can segue into the next tutorial [here](https://github.com/Mwajiduddin/Network-File-Shares-and-Permissions) where you can learn to do so. 
+Don't exit out of your virtuals machines and delete your resource groups in Azure just yet because if you want to learn how to configure file shares and its permissions in an Active Directory environment you can segue onto the next tutorial [here](https://github.com/Mwajiduddin/Network-File-Shares-and-Permissions).
 
 
 
