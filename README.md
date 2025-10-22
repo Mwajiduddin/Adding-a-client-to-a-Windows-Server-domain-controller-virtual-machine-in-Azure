@@ -1,4 +1,4 @@
-<h1 align="center">Installing Active Directory in Windows Server virtual machine and adding a client virtual machine to domain controller</h1>
+<h1 align="center">Installing Active Directory in Windows Server VM and adding a client VM to domain controller</h1>
 
 <p align="center">
 <img src="https://github.com/Mwajiduddin/Mwajiduddin/blob/main/images/img_activedirectory-page.png" height="65%" width="40%" />
